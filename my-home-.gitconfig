@@ -1,0 +1,14 @@
+[user]
+	name = avp
+	email = avp210159@gmail.com
+[alias]
+  co = checkout
+  ci = commit
+  st = status
+  br = branch
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  histt = log --pretty=format:\"%h T=%t %ad | %s%d [%an]\" --graph --date=short
+  type = cat-file -t
+  dump = cat-file -p
+[core]
+	editor = vi

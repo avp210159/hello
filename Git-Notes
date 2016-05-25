@@ -1,0 +1,46 @@
+
+
+CLI commands for github API v3 (replace all CAPS keywords):
+
+curl -u 'USER' https://api.github.com/user/repos -d '{"name":"REPO"}'
+# Remember replace USER with your username and REPO with your repository/application name!
+git remote add origin git@github.com:USER/REPO.git
+git push origin master
+
+shareimprove this answer
+	
+edited Sep 2 '13 at 21:07
+Michael Durrant
+43.6k43177283
+	
+answered Apr 25 '12 at 23:38
+bennedich
+6,76842231
+	
+26 	 
+	
+The slight problem with first command is that you are leaving your GitHub password in your ~/.bash_history. I would suggest replace -u 'USER:PASS' with -u 'USER', then curl will ask you for password interactively. – ivanzoid Dec 1 '12 at 14:31
+9 	 
+	
+To make the repo private from the start, use: curl -u 'USER' https://api.github.com/user/repos -d '{"name":"REPO", "private":"true"}' – Joe Fletcher Mar 21 '13 at 4:05
+1 	 
+	
+I wrote a bash script to save us all some typing. Takes user input and has sensible defaults: gist.github.com/robwierzbowski/5430952 – RobW Apr 21 '13 at 20:35
+   	 
+	
+Here's a Git alias for this. – Mechanical snail May 27 '13 at 4:06
+1 	 
+	
+Here's how to add it as a git alias: git config --global alias.gh-create '!sh -c "curl -u \"USERNAME\" https://api.github.com/user/repos -d \"{\\\"name\\\":\\\"$1\\\"}\"" -' – Robin Winslow Jun 7 '13 at 15:53
+1 	 
+	
+Actually @MattTagg's comment below is now my preferred solution - Hub is a brilliant project for managing all sorts of GitHub actions on the command-line. – Robin Winslow Jun 13 '13 at 8:42
+   	 
+	
+If using an org account, need to change the curl command to use .../orgs/ORGNAME/repos instead of .../user/repos, like curl -u 'USER' https://api.github.com/orgs/ORGNAME/repos -d '{"name":"REPO"}' – Stuart R. Jefferys Jul 29 '13 at 17:57
+3 	 
+	
+Don't forget that you can generate an access token and use it this way: curl https://api.github.com/user/repos?access_token=myAccessToken -d '{"name":"REPO"}'. :-) – Ionică Bizău May 28 '14 at 8:17
+   	 
+	
+oddly git remote add origin git@github.com:USER/REPO.git (SSH URL) did not work for me, but the HTTPS URL form does: git remote add origin https://github.com/USER/REPO.git – Kai Carver Oct 18 '15 at 11:57

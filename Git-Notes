@@ -145,3 +145,45 @@ avp@wubu:hello$ curl -u 'avpXXX...:ZZZ...' https://api.github.com/user/repos -d 
 }
 
 YES!!!! repo on github created!!!
+
+===========
+так НЕ получилось
+avp@wubu:hello$ git remote add origin git@github.com:avp210159/hello.git
+avp@wubu:hello$ git push origin maste
+error: src refspec maste does not match any.
+error: failed to push some refs to 'git@github.com:avp210159/hello.git'
+avp@wubu:hello$ 
+avp@wubu:hello$ echo '#hello' >README.md
+avp@wubu:hello$ git add README.md
+avp@wubu:hello$ git ci -a -m "add README.md for git"
+[master 213ddd5] add README.md for git
+ 1 file changed, 1 insertion(+)
+ create mode 100644 README.md
+avp@wubu:hello$ git push origin master
+The authenticity of host 'github.com (192.30.252.122)' can't be established.
+RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'github.com,192.30.252.122' (RSA) to the list of known hosts.
+Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+avp@wubu:hello$ 
+
+========
+а так получилось
+avp@wubu:hello$ git remote remove origin
+avp@wubu:hello$ git remote add origin https://github.com/avp210159/hello
+avp@wubu:hello$ git push origin master
+Username for 'https://github.com': avp210159
+Password for 'https://avp210159@github.com': 
+Counting objects: 29, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (20/20), done.
+Writing objects: 100% (29/29), 4.64 KiB | 0 bytes/s, done.
+Total 29 (delta 2), reused 0 (delta 0)
+To https://github.com/avp210159/hello
+ * [new branch]      master -> master
+avp@wubu:hello$ 
+

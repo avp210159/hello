@@ -192,3 +192,10 @@ avp@wubu:hello$
 
 ======= OK push OK ======== change on github =========
 
+work for modification times preserve begins...
+
+read current HEAD:
+cat .git/$(sed 's/^ref: //' .git/HEAD)
+d4aaa797e11fa2bfdfb0a80667779c1cd289554f
+list of modified (need commit) files
+git st -s | sed 's/M* *//'

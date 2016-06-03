@@ -212,5 +212,7 @@ git show --pretty="format:" --name-only
 echo end postcommit
 
 Try Again
+All in postcommit (try commit --amend into postcommit)
+
 
 

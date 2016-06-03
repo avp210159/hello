@@ -209,6 +209,7 @@ try postcommit:
 MFILE=$(git rev-parse --verify HEAD)
 echo postcommit $MFILE
 git show --pretty="format:" --name-only
+echo end postcommit
 
 Try Again
 

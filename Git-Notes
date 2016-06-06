@@ -232,6 +232,10 @@ git ls-tree -r --name-only $MFILE | grep -v .gitimes/
 and make in .gitimes/$MFILE sh-script with touch all these files
 touch ./gitimes sentinel
 commit --amend $MFILE
+-------------
+
+attempt 2
+
 
 
 

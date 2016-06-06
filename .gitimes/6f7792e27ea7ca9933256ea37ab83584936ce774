@@ -1,4 +1,4 @@
-#(mtimes sentinel again 2-nd) (Mon Jun 6 17:36:06 MSK 2016)
+# (mtimes sentinel again 3-nd) (Mon Jun 6 17:37:32 MSK 2016)
 touch -m -t 201606061713.04 '.gitignore'
 touch -m -t 201606061735.50 'Git-Notes'
 touch -m -t 201606021555.24 'README.md'

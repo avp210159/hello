@@ -222,6 +222,17 @@ All in postcommit (try commit --amend into postcommit)
 And again
 and again mistake
 
+---------
+Well, try other way/
+if -f .gitimes/sentinel then
+  rm .gitimes/sentinel ; exit
+fi
+MFILE=$(git rev-parse --verify HEAD)
+git ls-tree -r --name-only $MFILE | grep -v .gitimes/
+and make in .gitimes/$MFILE sh-script with touch all these files
+touch ./gitimes sentinel
+commit --amend $MFILE
+
 
 
 

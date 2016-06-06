@@ -236,6 +236,7 @@ commit --amend $MFILE
 
 attempt 2
 
+add chmod +x sh-file
 
 
 

@@ -254,6 +254,7 @@ here it is:
 #echo GIT_DIR: $GIT_DIR
 #echo GIT_WORK_TREE: $GIT_WORK_TREE
 #echo GIT_INDEX_FILE: $GIT_INDEX_FILE
+BRANCH=$(git status -s -b --p | head -1)
 echo \#$(date) WD:$(pwd)  \($BRANCH $(git rev-parse HEAD)\) >.tmp1-cur-mtimes
 
 > .tmp2-cur-mtimes

@@ -1,5 +1,5 @@
-#Tue Jun 7 15:28:05 MSK 2016 WD:/home/avp/src/git_tutorial/work/hello (95bc9f3fe00492075d6d4464038ea5816143c306)
-touch -m -t 201606071526.34 '.gitignore'
+#Tue Jun 7 15:36:23 MSK 2016 WD:/home/avp/src/git_tutorial/work/hello (c9d1277967211ebdb213bf1f17261566d93cc7fb)
+touch -m -t 201606071534.57 '.gitignore'
 touch -m -t 201606071523.21 'Git-Notes'
 touch -m -t 201606021555.24 'README.md'
 touch -m -t 201606021438.31 'index.html'

@@ -240,6 +240,6 @@ add chmod +x sh-file
 
 and again
 
-
-
-
+====
+The problem is that commit --amend changes commit-SHA
+So, try to save mtimes in versioned file .mtimes

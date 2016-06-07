@@ -1,6 +1,0 @@
-touch -m -t 201606021438.31 '.gitignore'
-touch -m -t 201606061705.22 'Git-Notes'
-touch -m -t 201606021555.24 'README.md'
-touch -m -t 201606021438.31 'index.html'
-touch -m -t 201606031443.13 'lib/hello.html'
-touch -m -t 201606021438.31 'my-home-.gitconfig'

@@ -244,3 +244,39 @@ and again
 The problem is that commit --amend changes commit-SHA
 So, try to save mtimes in versioned file .cur-mtimes with current HEAD-SHA
 
+---
+here it is:
+#!/bin/sh
+#
+# add mtimes of commited files to .mtimes
+#
+
+#echo GIT_DIR: $GIT_DIR
+#echo GIT_WORK_TREE: $GIT_WORK_TREE
+#echo GIT_INDEX_FILE: $GIT_INDEX_FILE
+echo \#$(date) WD:$(pwd)  \($(git rev-parse HEAD)\) >.tmp1-cur-mtimes
+
+> .tmp2-cur-mtimes
+for i in $(git ls-tree -r --name-only HEAD | grep -v .cur-mtimes)
+do
+#    echo process $i
+    mt=$(date +%Y%m%d%H%M.%S -r $i)
+    echo "touch -m -t $mt '$i'" >> .tmp2-cur-mtimes
+done
+
+if [ -f .cur-mtimes ] ; then
+    tail -n +2 .cur-mtimes > .tmp3-cur-mtimes
+    if cmp .tmp2-cur-mtimes .tmp3-cur-mtimes >/dev/null 2>&1 ; then
+	echo No mtime changes
+	rm -f .tmp[1-3]-*
+	exit
+    fi
+fi
+
+cat .tmp1-cur-mtimes .tmp2-cur-mtimes >.cur-mtimes
+chmod +x .cur-mtimes
+rm -f .tmp[1-3]-*
+git add .cur-mtimes
+---
+
+try again

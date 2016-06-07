@@ -1,0 +1,4 @@
+#Tue Jun 7 15:46:28 MSK 2016 WD:/home/avp/src/git_tutorial/work/hello (e466e8c142ad16798c1e85cf6d2a3d22fbb99d4b)
+touch -m -t 201606071543.30 'index.html'
+touch -m -t 201606071543.30 'lib/hello.html'
+touch -m -t 201606071543.30 'lib/style.css'

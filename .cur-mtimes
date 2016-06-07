@@ -1,7 +1,7 @@
-#Tue Jun 7 15:36:23 MSK 2016 WD:/home/avp/src/git_tutorial/work/hello (c9d1277967211ebdb213bf1f17261566d93cc7fb)
-touch -m -t 201606071534.57 '.gitignore'
-touch -m -t 201606071523.21 'Git-Notes'
-touch -m -t 201606021555.24 'README.md'
-touch -m -t 201606021438.31 'index.html'
-touch -m -t 201606031443.13 'lib/hello.html'
-touch -m -t 201606021438.31 'my-home-.gitconfig'
+#Tue Jun 7 15:57:17 MSK 2016 WD:/home/avp/src/git_tutorial/work/hello (## master M Git-Notes 33336a85abfeb7ed83cc531000b8e221af44cf88)
+touch -m -t 201606071544.58 '.gitignore'
+touch -m -t 201606071556.24 'Git-Notes'
+touch -m -t 201606071555.37 'README.md'
+touch -m -t 201606071555.37 'index.html'
+touch -m -t 201606071555.37 'lib/hello.html'
+touch -m -t 201606071555.37 'my-home-.gitconfig'

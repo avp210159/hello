@@ -16,6 +16,7 @@ Here it is (pre-commit hook)
 #!/bin/sh
 #
 # add mtimes of commited files to .mtimes
+# .git/hooks/pre-commit
 #
 
 esc_q ()

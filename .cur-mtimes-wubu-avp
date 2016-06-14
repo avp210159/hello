@@ -1,4 +1,4 @@
-#Tue Jun 7 16:03:34 MSK 2016 WD:/home/avp/src/git_tutorial/work/hello (## style 1a0adf671e04b672f6d23a96c52e8de009deb94b)
+#Tue Jun 14 16:10:28 MSK 2016 WD:/home/avp/src/git_tutorial/work/hello (## style fabec6b8c8a3365f3d4b254e40b77eedace3650a)
 touch -m -t 201606071544.58 '.gitignore'
 touch -m -t 201606071601.43 'index.html'
 touch -m -t 201606071601.43 'lib/hello.html'

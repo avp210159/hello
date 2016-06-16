@@ -1,0 +1,8 @@
+#Fri Jun 17 00:51:13 MSK 2016 WD:/home/avp/src/git_tuturial/hello (## master...origin/master a06157efa018c52a4defea4782534c4a78fb361c)
+touch -m -t 201606170049.40 '.cur-mtimes-wubu-avp'
+touch -m -t 201606161459.28 '.gitignore'
+touch -m -t 201606071523.21 'Git-Notes'
+touch -m -t 201606161614.38 'README.md'
+touch -m -t 201606021438.31 'index.html'
+touch -m -t 201606031443.13 'lib/hello.html'
+touch -m -t 201606021438.31 'my-home-.gitconfig'

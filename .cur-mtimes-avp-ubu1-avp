@@ -1,0 +1,7 @@
+#Fri Jun 17 00:56:14 MSK 2016 WD:/home/avp/src/git_tuturial/hello (## style...origin/style e3128919b73019d9c1f6784e2525d94a4d138c55)
+touch -m -t 201606170053.38 '.cur-mtimes-wubu-avp'
+touch -m -t 201606071544.58 '.gitignore'
+touch -m -t 201606161559.44 'README.md'
+touch -m -t 201606071601.43 'index.html'
+touch -m -t 201606071601.43 'lib/hello.html'
+touch -m -t 201606071601.43 'lib/style.css'

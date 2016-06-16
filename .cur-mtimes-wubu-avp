@@ -1,0 +1,7 @@
+#Thu Jun 16 15:01:32 MSK 2016 WD:/home/avp/src/git_tutorial/work/hello (## master 50fb2c879e61ca5152b500e90b085a989fd06fe7)
+touch -m -t 201606161459.28 '.gitignore'
+touch -m -t 201606071523.21 'Git-Notes'
+touch -m -t 201606141542.31 'README.md'
+touch -m -t 201606021438.31 'index.html'
+touch -m -t 201606031443.13 'lib/hello.html'
+touch -m -t 201606021438.31 'my-home-.gitconfig'

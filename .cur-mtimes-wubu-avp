@@ -1,6 +1,7 @@
-#Tue Jun 14 15:30:06 MSK 2016 WD:/home/avp/src/git_tutorial/work/hello (## master 2f6e07fc3ccb6accaddf036e88bba6311b825959)
+#Mon Jun 20 15:11:59 MSK 2016 WD:/home/avp/src/git_tutorial/work/hello (## mtime 2f7aecd4bfda3900220450cf9a83481ee25840ba)
 touch -m -t 201606071534.57 '.gitignore'
-touch -m -t 201606071523.21 'Git-Notes'
+touch -m -t 201606201504.08 '.gitimes/d4aaa797e11fa2bfdfb0a80667779c1cd289554f'
+touch -m -t 201606201511.02 'Git-Notes'
 touch -m -t 201606141528.26 'README.md'
 touch -m -t 201606021438.31 'index.html'
 touch -m -t 201606031443.13 'lib/hello.html'

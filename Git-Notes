@@ -216,6 +216,195 @@ All in postcommit (try commit --amend into postcommit)
 2-nd attempt
 3-d attempt (remove nested commit)
 4-d ...
+5-th
+...
+???-th
+And again
+and again mistake
 
+---------
+Well, try other way/
+if -f .gitimes/sentinel then
+  rm .gitimes/sentinel ; exit
+fi
+MFILE=$(git rev-parse --verify HEAD)
+git ls-tree -r --name-only $MFILE | grep -v .gitimes/
+and make in .gitimes/$MFILE sh-script with touch all these files
+touch ./gitimes sentinel
+commit --amend $MFILE
+-------------
 
+attempt 2
 
+add chmod +x sh-file
+
+and again
+
+====
+The problem is that commit --amend changes commit-SHA
+So, try to save mtimes in versioned file .cur-mtimes with current HEAD-SHA
+
+---
+here it is:
+#!/bin/sh
+#
+# add mtimes of commited files to .mtimes
+#
+
+#echo GIT_DIR: $GIT_DIR
+#echo GIT_WORK_TREE: $GIT_WORK_TREE
+#echo GIT_INDEX_FILE: $GIT_INDEX_FILE
+BRANCH=$(git status -s -b --p | head -1)
+echo \#$(date) WD:$(pwd)  \($BRANCH $(git rev-parse HEAD)\) >.tmp1-cur-mtimes
+
+> .tmp2-cur-mtimes
+for i in $(git ls-tree -r --name-only HEAD | grep -v .cur-mtimes)
+do
+#    echo process $i
+    mt=$(date +%Y%m%d%H%M.%S -r $i)
+    echo "touch -m -t $mt '$i'" >> .tmp2-cur-mtimes
+done
+
+if [ -f .cur-mtimes ] ; then
+    tail -n +2 .cur-mtimes > .tmp3-cur-mtimes
+    if cmp .tmp2-cur-mtimes .tmp3-cur-mtimes >/dev/null 2>&1 ; then
+	echo No mtime changes
+	rm -f .tmp[1-3]-* 
+	exit
+    fi
+fi
+
+cat .tmp1-cur-mtimes .tmp2-cur-mtimes >.cur-mtimes
+chmod +x .cur-mtimes
+rm -f .tmp[1-3]-*
+git add .cur-mtimes
+---
+
+try again
+---
+
+==================
+
+Сделал ветку mtime according to
+
+"  Moving to a new branch
+
+Unless there are other circumstances involved, this can be easily done by branching and rolling back.
+
+git branch newbranch
+git reset --hard HEAD~3 # Go back 3 commits. You *will* lose uncommitted work.*1
+git checkout newbranch
+
+But do make sure how many commits to go back. Alternatively, you can instead of HEAD~3, simply provide the hash of the commit you want to "revert back to" on the master (/current) branch, e.g:
+
+git reset --hard a1b2c3d4   
+    "
+
+git br mtime
+git br
+ll ..
+(cd ..; tar czf hello.tgz ./hello)
+git reset --hard d4aaa79
+git co mtime 
+ll
+./.cur-mtimes-wubu-avp
+
+Пытаюсь удалить (сжать?) лишние коммиты внутре нее ....
+
+git rebase -i a31734c
+...
+pick a1aee23 mtime postcommit 2
+s a54cd63 mtime postcommit 3
+s 312e92b mtime postcommit 3 4
+s a59abd9 mtime with nested commit in postcommit
+pick 1cc0c8a mtime with nested commit in postcommit 2-nd
+pick 81ddd75 mtime with nested commit in postcommit 2-nd
+...
+[detached HEAD a78f31e] mtime postcommit 2
+ Date: Fri Jun 3 14:43:49 2016 +0300
+ 3 files changed, 21 insertions(+), 1 deletion(-)
+error: could not apply 6502c2b... new .mtimes filename and hook script +
+...
+git rebase --skip // 2 раза
+и получил
+
+avp@wubu:hello$ git hist
+* b25f135 2016-06-14 | change pre-commit description in README (HEAD -> mtime) [avp]
+* 769203c 2016-06-09 | new .mtimes filename and hook script ++ [avp]
+* 5772aa5 2016-06-09 | new .mtimes filename and hook script [avp]
+* f1133bc 2016-06-07 | add BRANCH= to Notes [avp]
+* 8466fd0 2016-06-07 | restore mtimes in master [avp]
+* 410c835 2016-06-07 | ya some  changes in Notes and mtimes script [avp]
+* 5521c2b 2016-06-07 | some changes in Notes and mtimes script [avp]
+* 1bca0a4 2016-06-07 | switch to style ... [avp]
+* e6940ab 2016-06-07 | delete .gittimes/ from .gitignore [avp]
+* 997850d 2016-06-07 | mtimes pre-commit test2 [avp]
+* 0ae652c 2016-06-07 | mtimes pre-commit 1-st [avp]
+* 27f0a95 2016-06-07 | delete .gitimes/, switch to pre-commit .mtimes [avp]
+* 2445d81 2016-06-07 | mtimes in pre-commit (initial test 2 (--amend)) [avp]
+* 3f45c3f 2016-06-06 | mtimes sentinel again 3-nd [avp]
+* 1864dad 2016-06-06 | mtimes sentinel again 2-nd [avp]
+* 405f67b 2016-06-06 | mtimes sentinel again [avp]
+* 462e6fc 2016-06-06 | mtimes sentinel 3-st [avp]
+* 646499f 2016-06-06 | mtimes with sentinel 2-nd () [avp]
+* 7e0ca75 2016-06-06 | mtimes with sentinel 1-st [avp]
+* 7041124 2016-06-03 | mtime postcommit ./gitimes +n-th mistake [avp]
+* 28eb4ed 2016-06-03 | mtime postcommit ./gitimes +n-th [avp]
+* 748d4e2 2016-06-03 | mtime postcommit ./gitimes n-th [avp]
+* 83e1ed8 2016-06-03 | mtime postcommit ./gitimes [avp]
+* c377298 2016-06-03 | mtime postcommit 5-th [avp]
+* 5301a83 2016-06-03 | mtime postcommit 4-th [avp]
+* 6927dd4 2016-06-03 | mtime with nested commit in postcommit 2-nd [avp]
+* 6ddf211 2016-06-03 | mtime with nested commit in postcommit 2-nd [avp]
+* a78f31e 2016-06-03 | mtime postcommit 2 [avp]
+* a31734c 2016-06-02 | mtime work begins [avp]
+* d4aaa79 2016-05-26 | try .md formatting in README [avp]
+* b9db73c 2016-05-25 | github push from home OK [Vasily]
+* 1ff513c 2016-05-25 | change Git-Notes, try PUSH! [avp]
+* b6a9482 2016-05-25 | change readme, try to pull changes after clone [avp]
+* f7ae83c 2016-05-25 | hide email [Vasily]
+* eeac95f 2016-05-25 | add .gitignore ~/.gitconfig as my-home-... [avp]
+* 566eb66 2016-05-25 | add can do/can't do in Git-Notes [avp]
+* 213ddd5 2016-05-25 | add README.md for git [avp]
+* 4e2c742 2016-05-25 | result of curl in Git-Notes [avp]
+* 57953e4 2016-05-25 | add Git-Notes file [avp]
+* 8a6023f 2016-05-24 | Added index.html. [avp]
+* a828998 2016-05-24 | Moved hello.html to lib [avp]
+* ba52194 2016-05-24 | Add author/email [avp]
+* f9de6a7 2016-05-20 | Added HTML header (tag: v1) [avp]
+* 8d54403 2016-05-20 | Added standard HTML page tags (tag: v1-beta) [avp]
+* 05bb38e 2016-05-20 | Edit <h1> tag [avp]
+* a7da921 2016-05-20 | First Commit [avp]
+
+т.е. лишние, отмеченные `s` слились с первым и остался его коммент.
+Пробуем дальше ...
+
+поудалял строк в git rebase -i 6ddf2
+потом говорил много git rebese --skip
+получил
+
+* 2f7aecd 2016-06-14 | change pre-commit description in README (HEAD -> mtime) [avp]
+* 0dd8e2a 2016-06-09 | new .mtimes filename and hook script ++ [avp]
+* 88c5a7d 2016-06-03 | mtime with nested commit in postcommit 2-nd [avp]
+* 6ddf211 2016-06-03 | mtime with nested commit in postcommit 2-nd [avp]
+* a78f31e 2016-06-03 | mtime postcommit 2 [avp]
+* a31734c 2016-06-02 | mtime work begins [avp]
+* d4aaa79 2016-05-26 | try .md formatting in README [avp]
+* b9db73c 2016-05-25 | github push from home OK [Vasily]
+* 1ff513c 2016-05-25 | change Git-Notes, try PUSH! [avp]
+* b6a9482 2016-05-25 | change readme, try to pull changes after clone [avp]
+* f7ae83c 2016-05-25 | hide email [Vasily]
+* eeac95f 2016-05-25 | add .gitignore ~/.gitconfig as my-home-... [avp]
+* 566eb66 2016-05-25 | add can do/can't do in Git-Notes [avp]
+* 213ddd5 2016-05-25 | add README.md for git [avp]
+* 4e2c742 2016-05-25 | result of curl in Git-Notes [avp]
+* 57953e4 2016-05-25 | add Git-Notes file [avp]
+* 8a6023f 2016-05-24 | Added index.html. [avp]
+* a828998 2016-05-24 | Moved hello.html to lib [avp]
+* ba52194 2016-05-24 | Add author/email [avp]
+* f9de6a7 2016-05-20 | Added HTML header (tag: v1) [avp]
+* 8d54403 2016-05-20 | Added standard HTML page tags (tag: v1-beta) [avp]
+* 05bb38e 2016-05-20 | Edit <h1> tag [avp]
+* a7da921 2016-05-20 | First Commit [avp]
+
+совсем не то, что ожидал, но последний коммит тут

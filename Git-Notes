@@ -411,4 +411,3 @@ avp@wubu:hello$ git hist
 почему-то вылезает touch -m -t '.gitimes/d4aaa797e11fa2bfdfb0a80667779c1cd289554f' в cat .cur-mtimes-wubu-avp
 
 try again another commit ...
-
